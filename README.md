@@ -56,8 +56,8 @@ sbt test
 
 4. Run SystemVerilog testbench ([BTB_tb.sv](src/test/sv/BTB_tb.sv))
 
-- The SystemVerilog testbench can be used to verify the generated verilog design. This is much more robust testbench than the chisel testbench with lot of randomization and lot of testcases to cover all coner cases.
-- [This EDA Playground](https://edaplayground.com/x/KBRE) has the generated BTB verilog design and the verilog testbench. You can try it by yourself!
+- The SystemVerilog testbench can be used to verify the generated verilog design. This is much more robust testbench than the chisel testbench with lot of randomization and lot of testcases to cover all corner cases.
+- [This EDA Playground](https://edaplayground.com/x/KBRE) has the generated BTB verilog design and the verilog testbench. **You can try it by yourself!**
 
 ## Credits
 
