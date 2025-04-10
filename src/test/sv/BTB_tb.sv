@@ -40,7 +40,7 @@ class Way_model #(int NSETS = 8);
         bit [2:0]index = updatePC[$clog2(NSETS)+1:2];
 
         if ((tag_array[index] == tag) && (valid_array[index] == 1'b1)) begin // value available, need to update the prediction
-            $display("prediction_array[%0d]: %0p", index, prediction_array[index]);
+            // $display("prediction_array[%0d]: %0p", index, prediction_array[index]);
             updatePrediction(prediction_array[index], mispredicted);
         end
         else begin // replace existing value with a new value
@@ -163,10 +163,15 @@ class TwoWayBTB_model #(int NSETS = 8);
     endfunction
 
     function automatic void print_BTB;
-        $display("set | valid |  tag  | target| predictor || valid |  tag  | target| predictor |");
+        $display("|-----|-----------------------------------||-----------------------------------|");
+        $display("|     |              Way0                 ||              Way1                 |");
+        $display("|     |-------|-------|-------|-----------||-------|-------|-------|-----------|");
+        $display("| set | valid |  tag  | target| predictor || valid |  tag  | target| predictor |");
+        $display("|-----|-------|-------|-------|-----------||-------|-------|-------|-----------|");
         for(int i=0; i<NSETS; i++) begin
-            $display("  %0d |   %0d   | 0x%3x | 0x%3x |     %0d     ||   %0d   | 0x%3x | 0x%3x |     %0d     |", i, way[0].valid_array[i], way[0].tag_array[i], way[0].target_array[i], way[0].prediction_array[i], way[1].valid_array[i], way[1].tag_array[i], way[1].target_array[i], way[1].prediction_array[i]);
+            $display("|  %0d  |   %0d   | 0x%3x | 0x%3x |     %0d     ||   %0d   | 0x%3x | 0x%3x |     %0d     |", i, way[0].valid_array[i], way[0].tag_array[i], way[0].target_array[i], way[0].prediction_array[i], way[1].valid_array[i], way[1].tag_array[i], way[1].target_array[i], way[1].prediction_array[i]);
         end
+        $display("|-----|-------|-------|-------|-----------||-------|-------|-------|-----------|");
 
     endfunction
 
@@ -204,24 +209,6 @@ class TwoWayBTB_driver #(int NUM_INSTRUCTIONS = 40);
         target_addresses[NUM_INSTRUCTIONS-1] == 0; // last instruction should jump back to 0th instruction
     }
     
-    // constraint three_jumps_single_btb_set_c{
-
-    //     instructions[0]   == OTHER_INS;
-    //     instructions[1]   == OTHER_INS;
-    //     instructions[2]   == OTHER_INS;
-    //     instructions[3]   == OTHER_INS;
-    //     instructions[4]   == BRANCH_INS;
-    //     instructions[8]   == BRANCH_INS;
-    //     instructions[12]  == BRANCH_INS;
-    //     instructions[20]  == JUMP_INS;
-
-    //     target_addresses[4]  == 8;
-    //     target_addresses[8] == 12;
-    //     target_addresses[12] == 20;
-    //     target_addresses[20] == 0;
-
-    // }
-
     function new();
         // initialize fifos
         for(int i=0; i<FIFO_DEPTH-1; i++) begin
@@ -428,6 +415,8 @@ module TwoWayBTB_tb();
             #(CLK_PERIOD*0.9);
             BTB_driver.generate_next_pc(nextPC, instruction);
         end
+
+        $display("\nFinal state of Branch Target Buffer:\n");
         BTB_model.print_BTB();
         $finish;
     end

@@ -10,7 +10,6 @@ import chisel3._
 import chiseltest._
 import org.scalatest.flatspec.AnyFlatSpec
 
-import PipelinedRV32I._
 import btb_pkg._
 
 
