@@ -1,3 +1,5 @@
+![CI Pipeline: BTB](git@github.com:tharinduSamare/TwoWay_BranchTargetBuffer/actions/workflows/01_BTB.yml/badge.svg?event=push)
+
 <h1 align="center"> Two-Way Branch Target Buffer </h1>
 
 This is a **Two Way Set Associative Branch Target Buffer (BTB)** with integrated **2-bit branch predictor**  targetted for a (RISCV) **pipelined processor** to **improve the branch prediction performance**.
