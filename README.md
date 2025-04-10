@@ -1,4 +1,4 @@
-![CI Pipeline: BTB](git@github.com:tharinduSamare/TwoWay_BranchTargetBuffer/actions/workflows/01_BTB.yml/badge.svg?event=push)
+![CI Pipeline: BTB_basic](https://github.com/tharinduSamare/TwoWay_BranchTargetBuffer/actions/workflows/01_BTB.yml/badge.svg?event=push)
 
 <h1 align="center"> Two-Way Branch Target Buffer </h1>
 
