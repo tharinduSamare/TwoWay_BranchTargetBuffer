@@ -1,6 +1,6 @@
 <h1 align="center"> Two-Way Branch Target Buffer </h1>
 
-This is a **Two Way Set Associative Branch Target Buffer** (BTB) with integrated **2-bit branch predictor**  targetted for a (RISCV) **pipelined processor** to improve the branch prediction performance.
+This is a **Two Way Set Associative Branch Target Buffer (BTB)** with integrated **2-bit branch predictor**  targetted for a (RISCV) **pipelined processor** to **improve the branch prediction performance**.
 
 ## What is a Branch Target Buffer?
 
@@ -16,7 +16,7 @@ This is possible due to the fact that the target address (calculated from PC and
 - Write back policy: Least Recently Used (LRU)
 - Architecture: 32-bit
 
-Please see [BTB_specification](docs\BTB_specification.pdf) to find design implementation specifications.
+Please see [BTB_specification](docs/BTB_specification.pdf) to find design implementation specifications.
 
 ### BTB Architecture
 <img src="images/BTB.png" alt="BTB Architecture" width="600">
@@ -44,17 +44,17 @@ git clone git@github.com:tharinduSamare/TwoWay_BranchTargetBuffer.git
 cd TwoWay_BranchTargetBuffer
 ```
 
-2. Build chisel project ([BTB.scala](src\main\scala\BTB.scala)) with `SBT` and generate verilog code.
+2. Build chisel project ([BTB.scala](src/main/scala/BTB.scala)) with `SBT` and generate verilog code.
 ```
 sbt run
 ```
 
-3. Run chisel testbench ([BTB_tb.scala](src\test\scala\BTB_tb.scala))
+3. Run chisel testbench ([BTB_tb.scala](src/test/scala/BTB_tb.scala))
 ```
 sbt test
 ```
 
-4. Run SystemVerilog testbench ([BTB_tb.sv](src\test\sv\BTB_tb.sv))
+4. Run SystemVerilog testbench ([BTB_tb.sv](src/test/sv/BTB_tb.sv))
 
 - The SystemVerilog testbench can be used to verify the generated verilog design. This is much more robust testbench than the chisel testbench with lot of randomization and lot of testcases to cover all coner cases.
 - [This EDA Playground](https://edaplayground.com/x/KBRE) has the generated BTB verilog design and the verilog testbench. You can try it by yourself!
